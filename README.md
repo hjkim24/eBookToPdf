@@ -28,3 +28,24 @@ eBookToPdf/dist/ebook_to_pdf.exe
 3. 반드시 키보드 오른쪽 방향키를 통해 다음 페이지 전환이 되어야 한다.
 4. 페이지 수가 많을 경우 PDF 용량이 꽤 되므로 HDD 용량이 여유가 있어야 한다.
 5. PDF 재생성 오류 시 프로그램을 재실행한다.
+<br /><br /><br />
+
+# v2 (`eBookToPdf_v2.py`, macOS / Windows)
+영역을 드래그로 지정하고, 화질 손실 없이 PDF를 만든다.
+
+```bash
+pip3 install PySide6 img2pdf
+python3 eBookToPdf_v2.py
+```
+
+1. '드래그로 지정' 클릭 → 화면이 어두워지면 캡처할 영역을 드래그한다. (취소: ESC)
+2. 총 페이지 수와 캡처 간격(0.1~2초)을 정하고 'PDF로 만들기' → 저장 위치를 고른다.
+3. 뷰어에 포커스를 주고 캡처가 시작된다. 끝날 때까지 다른 앱을 클릭하지 않는다.
+   - macOS: YES24 eBook 앱을 자동으로 앞으로 가져온다.
+   - Windows: 기존 버전처럼 캡처 영역 좌상단을 한 번 클릭한다.
+4. '중지'를 누르면 그때까지 찍은 페이지로 PDF를 만든다.
+
+유의사항
+- macOS: 처음 실행 시 **시스템 설정 > 개인정보 보호 및 보안**에서 터미널 앱에 '화면 기록', '손쉬운 사용' 권한을 허용하고 터미널을 재시작한다.
+- macOS: YES24 앱을 전체 화면 모드로 두지 않는다. (영역 지정 막이 다른 Space에 뜬다)
+- Windows exe 빌드: `pip install pyinstaller` 후 `pyinstaller --onefile --windowed eBookToPdf_v2.py`
